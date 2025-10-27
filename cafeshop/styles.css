@@ -1,0 +1,360 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF5EB;
+    color: #4A3228;
+}
+
+header {
+    background: #8B4513;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.hero {
+    background-color: #D2691E;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #FFE4C4;
+}
+
+nav {
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(139, 69, 19, 0.95);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.logo a {
+    color: #FFE4C4;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.logo a:hover {
+    color: #FFA07A;
+}
+
+.logo a::after {
+    content: '☾';  /* Moon symbol */
+    margin-left: 5px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: #FFE4C4;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: #FFA07A;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+    color: #FFA07A;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #FFA07A;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: #8B4513;
+}
+
+#about {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #4A3228;
+}
+
+#menu {
+    padding: 2rem 0;
+}
+
+#menu .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.menu-item {
+    background-color: #FFDAB9;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(139, 69, 19, 0.1);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.menu-item-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.price {
+    font-size: 1.25rem;
+    color: #8B4513;
+    font-weight: bold;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.25rem;
+    background: linear-gradient(to right, #8B4513, #D2691E);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 2rem rgba(139, 69, 19, 0.15);
+    background-color: #FFE4C4;
+}
+
+article:hover::before {
+    opacity: 1;
+}
+
+article h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #8B4513;
+}
+
+article p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4A3228;
+    margin-bottom: 0.5rem;
+}
+
+/* Animation classes */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Menu item animations */
+.menu-item {
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-item:hover .menu-item-content {
+    background-color: #FFE4C4;
+}
+
+.menu-item .price {
+    transition: all 0.3s ease;
+}
+
+/* Hero section animations */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(139, 69, 19, 0.7),
+        rgba(210, 105, 30, 0.7)
+    );
+    z-index: 1;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+/* Navigation animations */
+nav {
+    transition: all 0.3s ease;
+}
+
+nav a {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Loading animation */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Active navigation state */
+nav ul li a.active {
+    color: #FFA07A;
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Smooth transitions for menu items */
+article {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+}
+
+.contact-info {
+    background-color: #FFDAB9;
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 40rem;
+    margin: 2rem auto;
+    box-shadow: 0 0.5rem 1rem rgba(139, 69, 19, 0.1);
+}
+
+.contact-info address {
+    font-style: normal;
+    line-height: 1.6;
+}
+
+.contact-info p {
+    margin-bottom: 1.5rem;
+}
+
+.contact-info a {
+    color: #8B4513;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #D2691E;
+}
+
+footer {
+    background: #8B4513;
+    color: #FFE4C4;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
