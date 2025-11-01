@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -130,6 +130,7 @@ main {
 }
 
 h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
     color: #8B4513;
 }
 
@@ -323,13 +324,32 @@ article:hover {
     box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
 }
 
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 .contact-info {
     background-color: #FFDAB9;
     border-radius: 1rem;
     padding: 2rem;
-    max-width: 40rem;
-    margin: 2rem auto;
     box-shadow: 0 0.5rem 1rem rgba(139, 69, 19, 0.1);
+}
+
+.contact-info h3 {
+    color: #8B4513;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .contact-info address {
@@ -339,6 +359,14 @@ article:hover {
 
 .contact-info p {
     margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-info i {
+    color: #D2691E;
+    width: 20px;
 }
 
 .contact-info a {
@@ -351,10 +379,191 @@ article:hover {
     color: #D2691E;
 }
 
+.business-hours {
+    margin-top: 2rem;
+}
+
+.business-hours ul {
+    list-style: none;
+    padding: 0;
+}
+
+.business-hours li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    color: #4A3228;
+}
+
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #8B4513;
+    color: #FFE4C4;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #D2691E;
+    transform: translateY(-3px);
+}
+
+.contact-form {
+    background-color: #FFE4C4;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(139, 69, 19, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #8B4513;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #FFDAB9;
+    border-radius: 0.5rem;
+    background-color: #FFF;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #D2691E;
+    box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.2);
+}
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background-color: #8B4513;
+    color: #FFE4C4;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.btn:hover {
+    background-color: #D2691E;
+    transform: translateY(-2px);
+}
+
+.btn-loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #FFE4C4;
+    border-top-color: transparent;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+}
+
+.btn.loading .btn-text {
+    display: none;
+}
+
+.btn.loading .btn-loader {
+    display: block;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 footer {
     background: #8B4513;
     color: #FFE4C4;
     text-align: center;
     padding: 1.5rem 0;
     margin-top: 3rem;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #8B4513;
+    color: #FFE4C4;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#back-to-top:hover {
+    background: #D2691E;
+    transform: translateY(-3px);
+}
+
+#back-to-top.visible {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add smooth scrolling to the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhance focus states for accessibility */
+:focus {
+    outline: 3px solid rgba(210, 105, 30, 0.5);
+    outline-offset: 2px;
+}
+
+/* Add loading indicator for images */
+img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
 }

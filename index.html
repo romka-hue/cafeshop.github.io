@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the magic of MoonBrew Café, where every sip tells a story. Enjoy our finest coffee, handcrafted beverages, and delicious pastries under a starlit ambiance.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:title" content="MoonBrew Café - Where Every Sip Tells a Story">
+    <meta property="og:description" content="Discover the magic of MoonBrew Café, where every sip tells a story. Enjoy our finest coffee, handcrafted beverages, and delicious pastries under a starlit ambiance.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com/">
+    <meta property="twitter:title" content="MoonBrew Café - Where Every Sip Tells a Story">
+    <meta property="twitter:description" content="Discover the magic of MoonBrew Café, where every sip tells a story. Enjoy our finest coffee, handcrafted beverages, and delicious pastries under a starlit ambiance.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=1200&q=80">
+
     <title>MoonBrew Café</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☾</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <!-- Add loading optimization for images -->
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
 </head>
 <body>
     <nav>
@@ -98,17 +120,45 @@
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <div class="contact-info">
-                <address>
-                    <p><strong>Address:</strong><br>
-                    123 Moonlight Avenue<br>
-                    Starlight City, SC 12345</p>
-                    
-                    <p><strong>Email:</strong><br>
-                    <a href="mailto:saxeliucnobia123@gmail.com">saxeliucnobia123@gmail.com</a></p>
-                    <p><strong>Phone:</strong><br>
-                    <a href="tel:+1234567890">(123) 456-7890</a></p>
-                </address>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Visit Us</h3>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Moonlight Avenue<br>Starlight District, ST 12345</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">(123) 456-7890</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:hello@moonbrewcafe.com">hello@moonbrewcafe.com</a></p>
+                    </address>
+                    <div class="business-hours">
+                        <h3>Business Hours</h3>
+                        <ul>
+                            <li><span>Monday - Friday:</span> 7:00 AM - 10:00 PM</li>
+                            <li><span>Saturday - Sunday:</span> 8:00 AM - 11:00 PM</li>
+                        </ul>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loader"></span>
+                    </button>
+                </form>
             </div>
         </section>
     </main>
@@ -116,5 +166,8 @@
     <footer>
         <p>&copy; 2025 MoonBrew Café. All rights reserved.</p>
     </footer>
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </body>
 </html>

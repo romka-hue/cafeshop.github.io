@@ -84,7 +84,102 @@ document.addEventListener('DOMContentLoaded', () => {
         hero.style.opacity = '1';
         hero.style.transform = 'translateY(0)';
     }, 300);
+
+    // Initialize form validation
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
+    }
 });
+
+// Form validation and submission
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const nameInput = form.querySelector('#name');
+    const emailInput = form.querySelector('#email');
+    const messageInput = form.querySelector('#message');
+    
+    // Basic validation
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (nameInput.value.trim().length < 2) {
+        showError(nameInput, 'Name must be at least 2 characters long');
+        return;
+    }
+    
+    if (!emailRegex.test(email)) {
+        showError(emailInput, 'Please enter a valid email address');
+        return;
+    }
+    
+    if (messageInput.value.trim().length < 10) {
+        showError(messageInput, 'Message must be at least 10 characters long');
+        return;
+    }
+    
+    // Show loading state
+    submitBtn.classList.add('loading');
+    
+    try {
+        // Simulate form submission (replace with actual API call)
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Success
+        form.reset();
+        showSuccess('Message sent successfully! We\'ll get back to you soon.');
+    } catch (error) {
+        showError(submitBtn, 'Failed to send message. Please try again.');
+    } finally {
+        submitBtn.classList.remove('loading');
+    }
+}
+
+function showError(element, message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    errorDiv.style.color = '#ff0000';
+    errorDiv.style.fontSize = '0.8rem';
+    errorDiv.style.marginTop = '0.5rem';
+    
+    // Remove any existing error message
+    const existingError = element.parentElement.querySelector('.error-message');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    element.parentElement.appendChild(errorDiv);
+    element.style.borderColor = '#ff0000';
+    
+    // Remove error after 3 seconds
+    setTimeout(() => {
+        errorDiv.remove();
+        element.style.borderColor = '';
+    }, 3000);
+}
+
+function showSuccess(message) {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    successDiv.style.color = '#28a745';
+    successDiv.style.padding = '1rem';
+    successDiv.style.marginTop = '1rem';
+    successDiv.style.backgroundColor = '#d4edda';
+    successDiv.style.borderRadius = '0.5rem';
+    successDiv.style.textAlign = 'center';
+    
+    const form = document.getElementById('contact-form');
+    form.appendChild(successDiv);
+    
+    setTimeout(() => {
+        successDiv.remove();
+    }, 5000);
+}
 
 // Dynamic navigation background
 window.addEventListener('scroll', () => {
@@ -108,5 +203,49 @@ document.querySelectorAll('.price').forEach(price => {
     price.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1) rotate(0)';
         this.style.color = '#8B4513';
+    });
+});
+
+// Back to Top button functionality
+const backToTopButton = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Lazy loading images with loading animation
+document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('img');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.addEventListener('load', () => {
+                    img.classList.add('loaded');
+                });
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => {
+        if (img.src) {
+            img.dataset.src = img.src;
+            img.src = '';
+            imageObserver.observe(img);
+        }
     });
 });
